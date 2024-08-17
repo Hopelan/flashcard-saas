@@ -18,6 +18,7 @@ You are tasked with creating flashcards that are engaging, educational, and effe
 
 You should return in the following JSON format:
 {
+"title":"shortt summary title of the question"
   "flashcards":[
     {
       "front": "Front of the card",

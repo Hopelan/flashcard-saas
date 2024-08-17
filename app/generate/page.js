@@ -20,6 +20,7 @@ import { useUser } from "@clerk/nextjs";
 export default function Generate() {
   const [text, setText] = useState("");
   const [flashcards, setFlashcards] = useState([]);
+  const [topics, setTopics] = useState([]);
   const [setName, setSetName] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
 
