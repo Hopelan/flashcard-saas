@@ -1,3 +1,5 @@
+'use client'
+import getStripe from "@/utils/get-stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AppBar, Box, Grid, Toolbar, Typography } from "@mui/material";
 import Button from '@mui/material/Button';
@@ -67,16 +69,68 @@ export default function Home() {
           Features
         </Typography>
         <Grid container spacing={4}>
-          {/* Feature items */}
+          <Grid item xs = {12} md  = {4}>
+            <Typography variant = "h6">Easy text input</Typography> 
+            <Typography>
+              {''}
+              Simply put your input and let our software do the rest
+              </Typography>
+          </Grid>
+          <Grid item xs = {12} md  = {4}>
+            <Typography variant = "h6">Smart Flashcards</Typography> 
+            <Typography>
+              {''}
+              Simply put your input and let our software do the rest
+              </Typography>
+          </Grid>
+          <Grid item xs = {12} md  = {4}>
+            <Typography variant = "h6">Accessible Anywhere</Typography> 
+            <Typography>
+              {''}
+              Simply put your input and let our software do the rest
+              </Typography>
+          </Grid>
         </Grid>
       </Box>
 
       <Box sx={{ my: 6, textAlign: "center" }}>
-        <Typography variant="h4" component="h2" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           Pricing
         </Typography>
-        <Grid container spacing={4} justifyContent="center">
-          {/* Pricing plans */}
+        <Grid container spacing={4}>
+          <Grid item xs = {12} md  = {6}>
+            <Box sx = {{
+              p:3,
+              border:'1px solid',
+              borderColor:'grey.300',
+              borderRadius:2,
+            }}>
+              <Typography variant = "h5" gutterBottom>Basic</Typography>
+              <Typography variant = "h6">$5/month</Typography> 
+              <Typography>
+                {''}
+                Access to basic flashcard features and limited storage 
+              </Typography>
+              <Button variant = "contained" color = "primary">Choose Basic</Button>
+            </Box>
+            
+          </Grid>
+          <Grid item xs = {12} md  = {6}>
+            <Box sx = {{
+              p:3,
+              border:'1px solid',
+              borderColor:'grey.300',
+              borderRadius:2,
+            }}>
+              <Typography variant = "h5" gutterBottom>Pro</Typography>
+              <Typography variant = "h6">$10/month</Typography> 
+              <Typography>
+                {''}
+                Access to unlimited flashcard features and storage, an priority support.
+              </Typography>
+              <Button variant = "contained" color = "primary" onClick = {handleSubmit}>Choose Pro</Button>
+            </Box>  
+          </Grid>
         </Grid>
       </Box>
     </main>

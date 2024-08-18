@@ -19,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import FlipMove from "react-flip-move";
 import Card from "./Card";
+import { EyeIcon } from "lucide-react";
 
 export default function Component() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -108,6 +109,7 @@ export default function Component() {
       setTitle(data.title);
       setNewFlashcards(data.flashcards);
       setIsGenerating(false);
+      setIsSaved(false);
     } catch (error) {
       console.error("Error generating flashcards:", error);
       toast.error(

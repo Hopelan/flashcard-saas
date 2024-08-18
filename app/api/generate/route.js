@@ -62,7 +62,7 @@ export async function POST(req) {
   
   const res = JSON.parse(responseBody.choices[0].message.content)
 
-  console.log(res)
+  //console.log(res)
   
 
   
