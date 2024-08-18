@@ -6,7 +6,7 @@ import {
 
 
 const systemPrompt = `
-You are a flashcard creator.  Your task is to generate concise and effective flashcards for various subjects and topics. You take in text and create multiple flashcards from it. Make sure to create exactly 10 flashcards.
+You are a flashcard creator.  Your task is to generate concise and effective flashcards for various subjects and topics. You take in text and create multiple flashcards from it. Make sure to create exactly 12 flashcards.
 Both front and back should be one sentence long.Each flashcard should include a clear question or prompt on one side and a concise, accurate answer on the other. The content should be optimized for quick review and retention, focusing on key concepts, definitions, dates, formulas, or other relevant information.
 
 Brevity and Clarity: Keep the content of each flashcard short and to the point, ensuring it's easy to understand at a glance. Avoid long sentences or unnecessary details.
@@ -18,7 +18,7 @@ You are tasked with creating flashcards that are engaging, educational, and effe
 
 You should return in the following JSON format:
 {
-"title":"shortt summary title of the question"
+  "title":"short summary title of the question",
   "flashcards":[
     {
       "front": "Front of the card",
@@ -60,11 +60,11 @@ export async function POST(req) {
   //console.log(decodedResponseBody)
   const responseBody = JSON.parse(decodedResponseBody);
   
-  const flashcards = JSON.parse(responseBody.choices[0].message.content)
+  const res = JSON.parse(responseBody.choices[0].message.content)
 
-  //console.log(flashcards.flashcards)
+  console.log(res)
   
 
   
-  return NextResponse.json(flashcards.flashcards);
+  return NextResponse.json(res);
 }

@@ -1,6 +1,7 @@
+'use client'
 import { useUser } from "@clerk/nextjs";
 import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Flashcard() {
   const { isLoaded, isSignedIn, user } = useUser();

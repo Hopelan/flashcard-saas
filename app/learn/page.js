@@ -50,11 +50,7 @@ export default function Component() {
   }, [user]);
 
   const saveFlashcards = async () => {
-    if (!setName.trim()) {
-      toast.error("Please enter a name for your flashcard set.");
-      return;
-    }
-
+    console.log(newFlashcards)
     try {
       const docRef = await addDoc(collection(db, "Flashcards"), {
         userId: user.id,
