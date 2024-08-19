@@ -30,7 +30,7 @@ export default function Component() {
   const [text, setText] = useState("");
   const [newFlashcards, setNewFlashcards] = useState([]);
   const [topics, setTopics] = useState([]);
-  const [isCreate, setIsCreate] = useState(true);
+  const [isCreate, setIsCreate] = useState(true)
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -39,6 +39,7 @@ export default function Component() {
 
   async function getFlashcards() {
     if (!user) return;
+    setLoading(true)
     console.log(user.id);
     const q = query(
       collection(db, "Flashcards"),
@@ -154,7 +155,9 @@ export default function Component() {
     <div className="flex flex-col h-screen">
       <header className="bg-primary text-primary-foreground py-4 px-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">A Level Flash</h1>
+          <Link href="/">
+            <h1 className="text-2xl font-bold">A Level Flash</h1>
+          </Link>
           <div className="flex items-center gap-4">
             <UserButton />
           </div>
@@ -240,23 +243,8 @@ export default function Component() {
 
                     <div className="space-y-4 mt-2">
                       {newFlashcards.map((newFlashCard, idx) => (
-                        <div
-                          key={idx}
-                          className="bg-muted rounded-md p-4 shadow-sm"
-                        >
-                          <h3 className="text-lg font-medium">
-                            {newFlashCard.front}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {newFlashCard.back}
-                          </p>
-                          <div className="flex justify-end mt-4">
-                            <Button variant="ghost" size="sm">
-                              <EyeIcon className="w-5 h-5" />
-                              <span className="sr-only">View Answer</span>
-                            </Button>
-                          </div>
-                        </div>
+                        <Card key={idx} flashcard={newFlashCard} />
+                    
                       ))}
                     </div>
                   </div>
