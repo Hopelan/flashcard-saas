@@ -72,13 +72,24 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <SignedOut>
                   <Link
-                    href="#"
+                    href="/sign-in"
                     className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
                     Get Started
                   </Link>
+                  </SignedOut>
+                  <SignedIn>
+                  <Link
+                    href="/learn"
+                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    prefetch={false}
+                  >
+                    Learn
+                  </Link>
+                  </SignedIn>
                 </div>
               </div>
               <img
@@ -152,7 +163,73 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32">
+
+    
+        <section className = "my-6 text-center">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl p-2">
+              Pricing
+            </h2>
+            <p className=" text-muted-foreground p-3">
+              Choose a plan that works for you
+            </p>
+          </div>
+          <div className = "grid grid-cols-2 gap-4">
+            <div className = "p-3">
+              <h3 className="text-xl font-bold p-3">
+                Basic
+              </h3>
+            <div className = "text-muted-foreground">
+              <h6>Free</h6> 
+              <p className = "p-3">
+                {''}
+                Access to basic flashcard features and limited storage 
+              </p>
+            </div>
+            <SignedIn>
+              <Link href = "/learn">
+                <button className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+                  Stay with Basic
+                </button>
+              </Link>
+            </SignedIn>
+          </div>
+          <div className = "p-3">
+            <h3 className="text-xl font-bold p-3">
+              Pro
+            </h3>
+          <div className = "text-muted-foreground">
+            <h6>$10/month</h6> 
+            <p className = "p-3">
+              {''}
+              Access to unlimited flashcard features and storage
+            </p>
+          </div>
+          <SignedIn>
+            <button className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    onClick = {handleSubmit}>
+              Choose Pro
+            </button> 
+          </SignedIn> 
+          </div>
+         </div>
+         <div>
+          <SignedOut>
+            <p  className = "text-muted-foreground p-3">
+              To choose a plan,&nbsp;  
+              <Link className = "font-bold" href="/sign-in">
+                login&nbsp;
+              </Link>or           
+              <Link className="font-bold" href="/sign-up">
+                &nbsp;sign-up.
+              </Link>
+            </p>
+          </SignedOut>
+         </div>
+        </section>
+
+        {/*
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
           <div className="container grid items-center gap-4 px-4 md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
@@ -173,8 +250,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+        */}
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-muted">
         <p className="text-xs text-muted-foreground">
           &copy; 2024 A Level Flashcard Generator. All rights reserved.
         </p>
@@ -242,75 +320,23 @@ function BookIcon(props) {
     </Button>
   </Box>
 
-      <Box sx={{ my: 6 }}>
-        <Typography variant="h4" component="h2" gutterBottom>
-          Features
-        </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs = {12} md  = {4}>
-            <Typography variant = "h6">Easy text input</Typography> 
-            <Typography>
-              {''}
-              Simply put your input and let our software do the rest
-              </Typography>
-          </Grid>
-          <Grid item xs = {12} md  = {4}>
-            <Typography variant = "h6">Smart Flashcards</Typography> 
-            <Typography>
-              {''}
-              Simply put your input and let our software do the rest
-              </Typography>
-          </Grid>
-          <Grid item xs = {12} md  = {4}>
-            <Typography variant = "h6">Accessible Anywhere</Typography> 
-            <Typography>
-              {''}
-              Simply put your input and let our software do the rest
-              </Typography>
-          </Grid>
-        </Grid>
-      </Box>
-
-      <Box sx={{ my: 6, textAlign: "center" }}>
-        <Typography variant="h4" gutterBottom>
-          Pricing
-        </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs = {12} md  = {6}>
-            <Box sx = {{
-              p:3,
-              border:'1px solid',
-              borderColor:'grey.300',
-              borderRadius:2,
-            }}>
-              <Typography variant = "h5" gutterBottom>Basic</Typography>
-              <Typography variant = "h6">$5/month</Typography> 
-              <Typography>
-                {''}
-                Access to basic flashcard features and limited storage 
-              </Typography>
-              <Button variant = "contained" color = "primary">Choose Basic</Button>
-            </Box>
-            
-          </Grid>
-          <Grid item xs = {12} md  = {6}>
-            <Box sx = {{
-              p:3,
-              border:'1px solid',
-              borderColor:'grey.300',
-              borderRadius:2,
-            }}>
-              <Typography variant = "h5" gutterBottom>Pro</Typography>
-              <Typography variant = "h6">$10/month</Typography> 
-              <Typography>
-                {''}
-                Access to unlimited flashcard features and storage, an priority support.
-              </Typography>
-              <Button variant = "contained" color = "primary" onClick = {handleSubmit}>Choose Pro</Button>
-            </Box>  
-          </Grid>
-        </Grid>
-      </Box>
-    </main>
-  );
+  <Box sx={{ my: 6 }}>
+    <Typography variant="h4" component="h2" gutterBottom>
+      Features
+    </Typography>
+    <Grid container spacing={4}>
+      {/* Feature items */
 }
+//   </Grid>
+// </Box>
+
+// <Box sx={{ my: 6, textAlign: "center" }}>
+//   <Typography variant="h4" component="h2" gutterBottom>
+//     Pricing
+//   </Typography>
+//   <Grid container spacing={4} justifyContent="center">
+//     {/* Pricing plans */}
+//   </Grid>
+//   </Box>
+// </main>; */}
+
